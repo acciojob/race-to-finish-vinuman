@@ -1,9 +1,8 @@
-window.promises = [];
+// Get the output div element
+const output = document.getElementById('output');
 
-// Do not change the code above this
-// add your promises to the array `promises`
-
-promises = [
+// Create an array of 5 promises that resolve with a random time between 1 and 5 seconds
+const promises = [
   new Promise(resolve => setTimeout(() => resolve(1), Math.floor(Math.random() * 5000) + 1000)),
   new Promise(resolve => setTimeout(() => resolve(2), Math.floor(Math.random() * 5000) + 1000)),
   new Promise(resolve => setTimeout(() => resolve(3), Math.floor(Math.random() * 5000) + 1000)),
@@ -11,6 +10,7 @@ promises = [
   new Promise(resolve => setTimeout(() => resolve(5), Math.floor(Math.random() * 5000) + 1000))
 ];
 
+// Wait for the first promise to resolve using Promise.any()
 Promise.any(promises)
   .then(result => {
     // Print the result to the output div
