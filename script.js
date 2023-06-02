@@ -1,22 +1,44 @@
-// Get the output div element
-const output = document.getElementById('output');
+const p1 = new Promise((resolve, reject) =>{
+	const time = Math.floor(Math.random()*5) + 1;
+	setTimeout(() =>{
+		const result = "p1";
+		resolve(result);
+	}, time)
+});
+const p2 = new Promise((resolve, reject) =>{
+	const time = Math.floor(Math.random()*5) + 1;
+	setTimeout(() =>{
+		const result = "p2";
+		resolve(result);
+	}, time)
+});
+const p3 = new Promise((resolve, reject) =>{
+	const time = Math.floor(Math.random()*5) + 1;
+	setTimeout(() =>{
+		const result = "p3";
+		resolve(result);
+	}, time)
+});
+const p4 = new Promise((resolve, reject) =>{
+	const time = Math.floor(Math.random()*5) + 1;
+	setTimeout(() =>{
+		const result = "p4";
+		resolve(result);
+	}, time)
+});
+const p5 = new Promise((resolve, reject) =>{
+	const time = Math.floor(Math.random()*5) + 1;
+	setTimeout(() =>{
+		const result = "p5";
+		resolve(result);
+	}, time)
+});
 
-// Create an array of 5 promises that resolve with a random time between 1 and 5 seconds
-const promises = [
-  new Promise(resolve => setTimeout(() => resolve(1), Math.floor(Math.random() * 5000) + 1000)),
-  new Promise(resolve => setTimeout(() => resolve(2), Math.floor(Math.random() * 5000) + 1000)),
-  new Promise(resolve => setTimeout(() => resolve(3), Math.floor(Math.random() * 5000) + 1000)),
-  new Promise(resolve => setTimeout(() => resolve(4), Math.floor(Math.random() * 5000) + 1000)),
-  new Promise(resolve => setTimeout(() => resolve(5), Math.floor(Math.random() * 5000) + 1000))
-];
+const arr = [p1, p2, p3, p4, p5];
 
-// Wait for the first promise to resolve using Promise.any()
-Promise.any(promises)
-  .then(result => {
-    // Print the result to the output div
-    output.textContent = `The first promise that resolved returned ${result}.`;
-  })
-  .catch(error => {
-    // Handle any errors
-    console.error(error);
-  });
+Promise.any(arr).then((values) =>{
+	const output = document.getElementById('output');
+	const p = document.createElement("p");
+	p.textContent = values;
+	output.appendChild(p);
+})
